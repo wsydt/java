@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop
+       https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="user" class="com.example.wsy.spring.bean.User"/>
+
+    <bean id="factory" class="com.example.wsy.spring.factory.MyBeanFactory"/>
+
+    <bean id="user1" class="com.example.wsy.spring.bean.User" factory-bean="factory" factory-method="getUser">
+        <constructor-arg index="0" name="name" value="wsy"/>
+        <constructor-arg index="1" name="age" value="20"/>
+    </bean>
+
+    <bean id="user2" class="com.example.wsy.spring.factory.MyBeanFactory" factory-method="getUser">
+        <constructor-arg index="0" name="name" value="tdy"/>
+    </bean>
+
+    <bean id="shirt" class="com.example.wsy.spring.bean.Cloth">
+        <constructor-arg name="type" value="shirt"/>
+    </bean>
+
+    <bean id="user3" class="com.example.wsy.spring.bean.User" factory-bean="factory" factory-method="getUser">
+        <constructor-arg>
+            <list>
+                <value>huawei</value>
+                <value>apple</value>
+                <value>mi</value>
+            </list>
+        </constructor-arg>
+
+        <constructor-arg>
+            <list>
+                <value>hansome</value>
+                <value>rich</value>
+                <value>happiness</value>
+            </list>
+        </constructor-arg>
+    </bean>
+
+
+</beans>

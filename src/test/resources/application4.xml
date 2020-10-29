@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop
+       https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="proxy" class="com.example.wsy.spring.proxy.TomProxyStatic" factory-method="getProxy">
+        <constructor-arg name="t" ref="tom"/>
+        <constructor-arg name="a" ref="AOP"/>
+    </bean>
+
+    <context:component-scan base-package="com.example.wsy.spring.proxy"/>
+
+
+    <bean id="factory" class="com.example.wsy.spring.proxy.TomProxy"/>
+
+    <bean id="proxy1" class="com.example.wsy.spring.proxy.Person" factory-bean="factory" factory-method="getProxy">
+        <constructor-arg name="t" ref="tom"/>
+        <constructor-arg name="a" ref="AOP"/>
+    </bean>
+
+</beans>

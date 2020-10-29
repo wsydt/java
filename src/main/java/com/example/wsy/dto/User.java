@@ -1,6 +1,8 @@
 package com.example.wsy.dto;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
     private Integer id;
 
     private String name;
@@ -33,6 +35,16 @@ public class User {
 
     public String getMail() {
         return mail;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", mail='" + mail + '\'' +
+                '}';
     }
 
     public void setMail(String mail) {
