@@ -2,6 +2,7 @@ package com.example.wsy.spring.aop;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -19,6 +20,11 @@ public class AOP {
     @Pointcut("execution(* com.example.wsy.spring.aop.*.*(..))")
     public void pointcut(){
 
+    }
+
+    @AfterReturning("pointcut()")
+    public void returning(){
+        System.out.println("return aop returning");
     }
 
     @Before("pointcut()")
