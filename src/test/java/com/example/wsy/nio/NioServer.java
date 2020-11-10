@@ -23,10 +23,9 @@ public class NioServer {
                 accept.configureBlocking(false);
                 channels.offer(accept);
             } else {
-                Iterator<SocketChannel> iterator = channels.iterator();
-                while(iterator.hasNext()){
+                for (SocketChannel channel : channels) {
                     ByteBuffer requestBuffer = ByteBuffer.allocate(1024);
-                    accept = iterator.next();
+                    accept = channel;
                     if (accept.isOpen() && accept.read(requestBuffer) == 0) {
                         continue;
                     }
