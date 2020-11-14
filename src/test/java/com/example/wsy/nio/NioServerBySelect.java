@@ -18,18 +18,16 @@ public class NioServerBySelect {
         Selector selector = Selector.open();
         SelectionKey selectionKey = serverSocketChannel.register(selector, 0, serverSocketChannel);
         selectionKey.interestOps(SelectionKey.OP_ACCEPT);
-
         serverSocketChannel.bind(new InetSocketAddress(10032));
-
         System.out.println("server start success ...");
 
         while (true) {
 
             selector.select();
 
-            Set<SelectionKey> selectionkeys = selector.selectedKeys();
+            Set<SelectionKey> selectionKeys = selector.selectedKeys();
 
-            Iterator<SelectionKey> iterator = selectionkeys.iterator();
+            Iterator<SelectionKey> iterator = selectionKeys.iterator();
             while (iterator.hasNext()) {
                 SelectionKey key = iterator.next();
                 iterator.remove();
@@ -59,8 +57,8 @@ public class NioServerBySelect {
                         String responseData = "HTTP/1.1 OK 200\r\n"
                                 + "Content-Length : 22\r\n\r\n"
                                 + "ni shi yi ge da sha bi";
-                        ByteBuffer responsebuffer = ByteBuffer.wrap(responseData.getBytes());
-                        socketChannel.write(responsebuffer);
+                        ByteBuffer responseBuffer = ByteBuffer.wrap(responseData.getBytes());
+                        socketChannel.write(responseBuffer);
                         System.out.println("response success");
                     } catch (IOException e) {
                         e.printStackTrace();
