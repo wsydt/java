@@ -24,7 +24,7 @@ public class ReadFile {
 
     }
 
-    private static void processData(String name,boolean queryFlag) throws IOException {
+    public static void processData(String name,boolean queryFlag) throws IOException {
         String filePath = "F:\\workspace-n\\station-web-exp\\src\\main\\webapp\\WEB-INF\\pages\\";
         String dir = "scan";
         String JSDir = dir + "\\utilsJS";

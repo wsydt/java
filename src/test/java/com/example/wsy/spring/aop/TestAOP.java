@@ -19,7 +19,6 @@ public class TestAOP {
         System.out.println(user);
 
     }
-
     private static void aop() {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("aop.xml");
         TestDao test = (TestDao) applicationContext.getBean("testDao");
