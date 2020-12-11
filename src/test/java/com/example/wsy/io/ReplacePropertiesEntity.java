@@ -16,11 +16,12 @@ import java.util.Map;
 
 public class ReplacePropertiesEntity {
 
-    private static String filePathVI = "F:\\国际化资源文件\\越南语";
+    private static final String filePathVI = "F:\\国际化资源文件\\英语";
 
     public static Map<String, String> cnProperties = new HashMap<>();
     private static Excel<PropertiesEntity> excel = new Excel<>();
-    private static String filePathCN = "F:\\国际化资源文件\\中文";
+    private static final String filePathCN = "F:\\国际化资源文件\\中文";
+    static final String outFilePath = "F:\\国际化资源文件\\替换后的英语.txt";
 
     static {
         try {
@@ -47,13 +48,12 @@ public class ReplacePropertiesEntity {
     }
 
     public static void main(String[] args) throws IOException, InstantiationException, IllegalAccessException, NoSuchMethodException, InvocationTargetException {
-        String propertiesFilePath = "F:\\国际化后端\\海外国际化字段整理.翻译版.xlsx";
+        String propertiesFilePath = "F:\\国际化后端\\海外国际化-英语.xlsx";
         BufferedReader reader = new BufferedReader(new FileReader(propertiesFilePath));
         String read;
         List<PropertiesEntity> excelData = excel.getExcelData(propertiesFilePath, PropertiesEntity.class);
         String result = replaceProperties(filePathVI);
         System.out.println(result);
-        String outFilePath = "F:\\国际化资源文件\\替换后的越南语.txt";
         BufferedWriter writer = new BufferedWriter(new FileWriter(outFilePath));
         if (!StringUtils.isEmpty(result)) {
             writer.write(result,0, result.length());
@@ -77,7 +77,7 @@ public class ReplacePropertiesEntity {
             }
             read = read.trim();
             if (line == 2060) {
-                System.out.println("-");
+//                System.out.println("-");
             }
             if (read.startsWith("#") || !read.contains("=")) {
                 sb.append(read).append("\n");

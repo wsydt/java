@@ -25,6 +25,7 @@ public class Excel<T> {
 
     public List<T> getExcelData(String filePath, Class<T> clazz) throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
         String propertiesFilePath = "F:\\国际化后端\\海外国际化字段整理.翻译版.xlsx";
+        propertiesFilePath = filePath;
         Workbook wb = readExcel(propertiesFilePath);
         List<T> list = new ArrayList<>();
         if (wb != null) {

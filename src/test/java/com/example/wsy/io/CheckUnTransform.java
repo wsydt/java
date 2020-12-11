@@ -1,21 +1,16 @@
 package com.example.wsy.io;
 
-import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.Replace;
 import org.springframework.util.StringUtils;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.Buffer;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CheckUnTransform {
     public static void main(String[] args) throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader("F:\\国际化资源文件\\替换后的越南语.txt"));
+        BufferedReader reader = new BufferedReader(new FileReader(ReplacePropertiesEntity.outFilePath));
         StringBuilder sb = new StringBuilder();
         List<String> untransForm = new ArrayList<>();
         String read;
@@ -34,7 +29,7 @@ public class CheckUnTransform {
             String[] value = read.split("=");
             if (value.length >= 2 && value[0].trim().equals(value[1].trim()))  {
 //                System.out.println(value[0].trim() + "=" + ReplacePropertiesEntity.cnProperties.get(value[0].trim()).trim());
-                sb.append(value[0].trim()).append("=").append(ReplacePropertiesEntity.cnProperties.get(value[0].trim()).trim()).append("\n");
+                sb.append("line : ").append(line).append(", ").append(value[0].trim()).append("=").append(ReplacePropertiesEntity.cnProperties.get(value[0].trim()).trim()).append("\n");
             } else {
 //                sb.append(read).append("\n");
             }
